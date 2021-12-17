@@ -18,7 +18,7 @@
     "content_scripts": [
         {   
             "run_at": "document_end",
-            "matches": ["https://www.google.com/*"],
+            "matches": ["https://www.google.com/"],
             "css": ["main.css"],
             "js": ["main.js"]
         }

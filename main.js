@@ -3,16 +3,19 @@ var probability_one_in = 20;
 var troll = (0 == Math.floor(Math.random() * probability_one_in));
 
 if(troll){
-    let bean_num = Math.floor(Math.random() * 5) + 1;
-    let bean_image_path = "media/bean_image/" + bean_num.toString() + ".jpeg";
-    let bean_audio_path = "media/bean_audio/" + bean_num.toString() + ".m4a";
-    let image = chrome.extension.getURL(bean_image_path)
-    let audio = "" //chrome.extension.getURL(bean_audio_path)
-    init(image, audio);
+    try{
+        let bean_num = Math.floor(Math.random() * 5) + 1;
+        let bean_image_path = "media/bean_image/" + bean_num.toString() + ".jpeg";
+        let image = chrome.extension.getURL(bean_image_path)
+        init(image);
+    }
+    catch(error){
+        console.log("WebTroll Error");
+    }
 }
 
 
-function init(image_path, audio_path){
+function init(image_path){
     let topimagesrc = document.querySelector("picture source");
     let topimage = document.querySelector("picture img");
     let originalsrc;
@@ -31,13 +34,6 @@ function init(image_path, audio_path){
         if(topimage) topimage.src = originalsrc;
         if(topimagesrc) topimagesrc.srcset = originalsrc;
     }, 3000);
-
-    if(topimage || topimagesrc) play_audio(audio_path);
-}
-
-function play_audio(audio_path){
-    let audio = new Audio(audio_path);
-    audio.play();
 }
 
 
