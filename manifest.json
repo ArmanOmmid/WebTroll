@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "WebTroll",
+    "description": "WebTroll",
+    "version": "1.0",
+    "icon": {
+        "16": "/media/logo.png",
+        "48": "/media/logo.png",
+        "128": "/media/logo.png"
+    },
+    "page_action": {
+        "default_icon": {
+            "16": "/media/logo.png",
+            "48": "/media/logo.png",
+            "128": "/media/logo.png"
+        }
+    },
+    "content_scripts": [
+        {   
+            "run_at": "document_end",
+            "matches": ["https://www.google.com/*"],
+            "css": ["main.css"],
+            "js": ["main.js"]
+        }
+    ],
+    "web_accessible_resources": ["media/*"]
+}
